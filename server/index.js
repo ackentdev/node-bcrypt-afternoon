@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const authCtrl = require('./controllers/authController');
+const treausreCtrl = require('./controllers/treasureController');
 
 const app = express();
 
@@ -24,10 +25,10 @@ app.use(
 );
 
 app.post('/auth/register', authCtrl.register);
-
 app.post('/auth/login', authCtrl.login);
-
 app.get('/auth/logout', authCtrl.logout);
+
+app.get('/api/treasure/dragon', treausreCtrl.dragonTreasure);
 
 app.listen(SERVER_PORT, () => {
     console.log(`I assure you, this battle station is fully operational! ✴ ${SERVER_PORT}`)
